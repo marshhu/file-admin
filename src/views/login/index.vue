@@ -129,20 +129,25 @@ export default {
       //     this.$message.error(err); //登录失败提示错误
       //   });
       //POST
-    this.$ajax({
-      method: 'post',
-      url: 'http://localhost:8000/api/user/login',
-      data:{
-        account: '15300153009',
-        username: '123456'
-      }
-    }).then(response=>{
-	    if(response.code == '200'){
-        this.$router.push({ path: "/" });
-      }
-    }).catch(function(err){
-        console.log(err)
-    });
+      this.loading = true;
+      this.$ajax({
+        method: "post",
+        url: "http://localhost:8000/api/user/login",
+        data: {
+          account: "15300153009",
+          username: "123456"
+        }
+      })
+        .then(response => {
+          console.log(response);
+          console.log("login success!");
+          this.$router.push({ path: this.redirect || "/" });
+          this.loading = false;
+        })
+        .catch(function(err) {
+          this.loading = false;
+          console.log(err);
+        });
     }
   }
 };
