@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
- function login(data) {
+export function login(data) {
   return request({
     url: '/api/user/login',
     method: 'post',
@@ -10,7 +10,7 @@ import request from '@/utils/request'
 
 export function getInfo(token) {
   return request({
-    url: '/api/user/info',
+    url: '/api/user/getInfo',
     method: 'get',
     params: { token }
   })
@@ -23,17 +23,4 @@ export function logout() {
   })
 }
 
-export function LoginByUsername({ commit }, userInfo) {
-  return new Promise((resolve, reject) => {
-    login(userInfo).then(response => {
-      const data = response.data
-      console.log('login:'+JSON.stringify(data))
-      Cookies.set('Token', response.data.token) //登录成功后将token存储在cookie之中
-      commit('SET_TOKEN', data.token)
-      resolve()
-    }).catch(error => {
-      reject(error)
-    });
-  });
-}
 

@@ -15,9 +15,8 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
-import axios from 'axios' //引入axios
-
-Vue.prototype.$ajax=axios //修改Vue的原型属性
+import axios from 'axios';
+Vue.prototype.$axios = axios;
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
