@@ -15,8 +15,8 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
-import axios from 'axios';
-Vue.prototype.$axios = axios;
+// import axios from 'axios';
+// Vue.prototype.$axios = axios;
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
