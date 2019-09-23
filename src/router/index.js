@@ -53,17 +53,31 @@ export const constantRoutes = [
     }]
   },
   {
-    path: '/file',
+    path: '/filemanage',
     component: Layout,
-    redirect: '/file/upload',
-    name: 'file',
+    redirect: '/filemanage/image',
+    name: 'filemanage',
     meta: { title: '文件管理', icon: 'example' },
-    children: [{
-      path: 'upload',
-      name: 'uploadfile',
+    children: [
+      {
+      path: 'image',
+      name: 'image',
+      component: () => import('@/views/image/index'),
+      meta: { title: '图片管理', icon: 'documentation' }
+     },
+     {
+      path: 'vedio',
+      name: 'vedio',
+      component: () => import('@/views/vedio/index'),
+      meta: { title: '视频管理', icon: 'documentation' }
+     }, 
+     {
+      path: 'file',
+      name: 'file',
       component: () => import('@/views/file/index'),
-      meta: { title: '上传文件', icon: 'documentation' }
-    }]
+      meta: { title: '文档管理', icon: 'documentation' }
+     }
+   ]
   },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

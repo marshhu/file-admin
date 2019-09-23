@@ -1,24 +1,13 @@
 import request from '@/utils/request'
 
-export function upload(data) {
-  return request({
-    url: '/api/v1/file',
-    method: 'post',
-    data
-  })
+
+export function upload(url,formData,headers){
+  return request.post(url, formData, headers)
 }
 
-export function getfileinfo(filesha1) {
+export function getFileList() {
   return request({
-    url: '/api/v1/file',
+    url: '/api/upload/list',
     method: 'get',
-    params: { filesha1 }
   })
 }
-
-export function getall() {
-    return request({
-      url: '/api/v1/file',
-      method: 'get',
-    })
-  }
